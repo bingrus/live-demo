@@ -1,0 +1,115 @@
+---
+title: "Meeting"
+author: "Bingru Sun"
+date: "15/07/2018"
+output: 
+  beamer_presentation:
+    df_print: tibble
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=12, fig.height=8) 
+```
+
+## Date preperation
+  -genes mutated in at least 50 cell lines
+  
+  -CNV significant genes
+  
+  -Example plot of CREBBP
+```{r ll, include=FALSE}
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+library(ggrepel)
+```
+
+```{r cars,echo = FALSE,include=FALSE}
+roast_gene <- read.csv('/Users/ll/Desktop/work/analysis/analysis_on_expression/new_roastresult.csv',header = TRUE)
+cnv.genes<-read.csv('/Users/ll/Desktop/work/analysis/analysis_on_expression/cnv_genes.csv')
+mtcl_regulator_o<-read.csv('/Users/ll/Desktop/work/analysis/analysis_on_expression/mtcl_regulator.csv',row.names = 1)
+mtcl_regulator<-as.numeric(mtcl_regulator_o[,1])
+names(mtcl_regulator)<-row.names(mtcl_regulator_o)
+row.names(mtcl_regulator)
+cnv.genes<-as.character(cnv.genes$x)
+roast_gene <- rename(roast_gene, gene = X)
+#as.character(roast_gene$gene[roast_gene$Down<0.05])
+#as.character(roast_gene$gene[roast_gene$Up<0.05])
+#as.character(roast_gene$gene[roast_gene$Mixed<0.05])
+roast_gene.convert<-roast_gene
+roast_gene.convert$Down<- -(1-roast_gene$Down)
+roast_gene.convert$Up<- 1-roast_gene$Up
+roast_gene.convert$UpOrDown<-NULL
+roast_gene.melt<-melt(roast_gene.convert)
+```
+
+
+## Down
+```{r cnv,echo = FALSE}
+result.cnv<-roast_gene[which(roast_gene$gene %in% cnv.genes),]
+result.cnv[result.cnv$Down<0.05,]
+nrow(result.cnv[result.cnv$Down<0.05,])
+```
+
+##Up
+```{r cnv2,echo = FALSE}
+result.cnv[result.cnv$Up<0.05,]
+nrow(result.cnv[result.cnv$Up<0.05,])
+```
+
+##Mixed
+```{r snv3,echo = FALSE,pages.print = 2}
+result.cnv[result.cnv$Mixed<0.05,]
+nrow(result.cnv[result.cnv$Mixed<0.05,])
+```
+
+
+
+##Genes mutated in over 50 cell lines genes stripchart
+```{r mu,echo = FALSE}
+regulator.50<-mtcl_regulator[mtcl_regulator>50]
+regulator.50<-names(regulator.50)
+roast_gene.50<-roast_gene.melt[which(roast_gene.melt$gene %in% regulator.50),]
+#stripchart(roast_gene.50$value)
+
+ggplot(roast_gene.50) + geom_point(aes(x = value, y  = gene,color = variable))+geom_vline(xintercept = c(-0.95,0.05,0.95))
+```
+
+##CNV significant genes stripchart
+```{r mu1,echo = FALSE}
+
+roast_gene.50<-roast_gene.melt[which(roast_gene.melt$gene %in% cnv.genes),]
+#stripchart(roast_gene.50$value)
+
+ggplot(roast_gene.50) + geom_point(aes(x = value, y  = gene,color = variable))+geom_vline(xintercept = c(-0.95,0.05,0.95))
+```
+
+##CREBBP plot
+```{r ssgsea,echo = FALSE}
+regssgsea<-read.csv('/Users/ll/Desktop/work/analysis/analysis_on_expression/regssgsea.csv',row.names = 1)
+cl<-read.csv('/Users/ll/Desktop/work/analysis/analysis_on_expression/clinfo.csv',row.names = 1)
+```
+```{r function,echo = FALSE}
+plotgene<-function(x){
+cl.info<-colnames(cl)
+gene.cl<-as.character(cl[x,])
+gene.score<-as.numeric(regssgsea[x,])
+gene.cl[which(gene.cl == 'TRUE')]<-'mutate'
+gene.cl[which(gene.cl == 'FALSE')]<-'notmutate'
+gene.df<-data.frame(gene.score,gene.cl,cl.info)
+colnames(gene.df)<-c('score','condition','cl')
+Scatterplot<-ggplot(gene.df,aes(condition,score,color = condition,label=cl))+geom_point(position = 'jitter',size = 0.5)+scale_colour_manual(values = c('darkorange','darkorchid4'))+geom_label_repel(aes(label = ifelse(score>0.115|score<0.06,cl.info,'')),
+                  box.padding   = 0.25, 
+                  point.padding = 0.2,
+                  segment.color = 'grey50',
+                  size =3,
+                  direction    = "y",
+                  hjust =0.5)
+  theme_classic()
+return(Scatterplot+geom_boxplot(alpha = 0,colour = 'black'))}
+```
+```{r plots,echo = FALSE}
+plotgene('CREBBP')
+
+```
