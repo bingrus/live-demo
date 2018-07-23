@@ -2,9 +2,7 @@
 title: "Meeting"
 author: "Bingru Sun"
 date: "15/07/2018"
-output: 
-  workflowr::wflow_html:
-    df_print: tibble
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
