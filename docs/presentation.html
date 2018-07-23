@@ -346,7 +346,7 @@ div.section {
 </details>
 </li>
 <li>
-<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/bingrus/live-demo/tree/fdcfb4a2d8a1ded4b364e071912ea426171b4571" target="_blank">fdcfb4a</a> </summary></p>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/bingrus/live-demo/tree/222124fdc7c3c4b8475be5930a8ddca50128e772" target="_blank">222124f</a> </summary></p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 <pre><code>
 working directory clean
@@ -377,6 +377,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/bingrus/live-demo/blob/222124fdc7c3c4b8475be5930a8ddca50128e772/analysis/presentation.Rmd" target="_blank">222124f</a>
+</td>
+<td style="text-align:left;">
+bingrus
+</td>
+<td style="text-align:left;">
+2018-07-23
+</td>
+<td style="text-align:left;">
+Add my first analysis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+html
+</td>
+<td style="text-align:left;">
+<a href="https://cdn.rawgit.com/bingrus/live-demo/e273b8e719b4f6af1403a195dd7cbae09813bf53/docs/presentation.html" target="_blank">e273b8e</a>
+</td>
+<td style="text-align:left;">
+bingrus
+</td>
+<td style="text-align:left;">
+2018-07-23
+</td>
+<td style="text-align:left;">
+Build site.
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 html
@@ -458,38 +492,45 @@ Build site.
 </div>
 <div id="down" class="section level2">
 <h2>Down</h2>
-<pre><code># A tibble: 1 x 5
-  gene    Down    Up UpOrDown Mixed
-* &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
-1 BRD4  0.0135 0.987    0.027 0.039</code></pre>
+<pre><code>    gene       Down        Up UpOrDown Mixed
+123 BRD4 0.01350675 0.9869935    0.027 0.039</code></pre>
 <pre><code>[1] 1</code></pre>
 </div>
 <div id="up" class="section level2">
 <h2>Up</h2>
-<pre><code># A tibble: 3 x 5
-  gene   Down       Up UpOrDown Mixed
-* &lt;fct&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
-1 BACH2 0.994 0.00650     0.013 0.026
-2 HIF1A 1     0.000500    0.001 0.065
-3 RB1   0.965 0.0355      0.071 0.001</code></pre>
+<pre><code>      gene      Down           Up UpOrDown Mixed
+97   BACH2 0.9939970 0.0065032516    0.013 0.026
+487  HIF1A 1.0000000 0.0005002501    0.001 0.065
+1031   RB1 0.9649825 0.0355177589    0.071 0.001</code></pre>
 <pre><code>[1] 3</code></pre>
 </div>
 <div id="mixed" class="section level2">
 <h2>Mixed</h2>
-<pre><code># A tibble: 24 x 5
-   gene     Down      Up UpOrDown Mixed
- * &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
- 1 AHR    0.922  0.0785     0.157 0.039
- 2 ATR    0.940  0.0605     0.121 0.003
- 3 BACH2  0.994  0.00650    0.013 0.026
- 4 BPTF   0.635  0.366      0.731 0.049
- 5 BRD4   0.0135 0.987      0.027 0.039
- 6 CREBBP 0.898  0.103      0.205 0.001
- 7 CUX1   0.467  0.534      0.933 0.002
- 8 EP300  0.865  0.135      0.27  0.001
- 9 FN1    0.292  0.709      0.583 0.023
-10 HELZ2  0.512  0.488      0.976 0.006
-# ... with 14 more rows</code></pre>
+<pre><code>       gene       Down          Up UpOrDown Mixed
+32      AHR 0.92196098 0.078539270    0.157 0.039
+94      ATR 0.93996998 0.060530265    0.121 0.003
+97    BACH2 0.99399700 0.006503252    0.013 0.026
+120    BPTF 0.63481741 0.365682841    0.731 0.049
+123    BRD4 0.01350675 0.986993497    0.027 0.039
+222  CREBBP 0.89794897 0.102551276    0.205 0.001
+242    CUX1 0.46673337 0.533766883    0.933 0.002
+324   EP300 0.86543272 0.135067534    0.270 0.001
+388     FN1 0.29164582 0.708854427    0.583 0.023
+480   HELZ2 0.51225613 0.488244122    0.976 0.006
+621    JAK1 0.89194597 0.108554277    0.217 0.001
+653   KMT2B 0.52576288 0.474737369    0.949 0.001
+655   KMT2D 0.75737869 0.243121561    0.486 0.001
+723   MED13 0.78089045 0.219609805    0.439 0.012
+792   NCOA6 0.10155078 0.898949475    0.203 0.033
+794   NCOR1 0.30065033 0.699849925    0.601 0.006
+795   NCOR2 0.85792896 0.142571286    0.285 0.001
+915  PIK3R1 0.93496748 0.065532766    0.131 0.022
+999    PTEN 0.05352676 0.946973487    0.107 0.001
+1031    RB1 0.96498249 0.035517759    0.071 0.001
+1252 TNRC6A 0.61680840 0.383691846    0.767 0.003
+1254 TNRC6C 0.74537269 0.255127564    0.510 0.001
+1256  TOP2B 0.66283142 0.337668834    0.675 0.002
+1258   TP53 0.94147074 0.059029515    0.118 0.001</code></pre>
 <pre><code>[1] 24</code></pre>
 </div>
 <div id="genes-mutated-in-over-50-cell-lines-genes-stripchart" class="section level2">
@@ -615,21 +656,20 @@ other attached packages:
 [1] ggrepel_0.8.0  ggplot2_3.0.0  reshape2_1.4.3 dplyr_0.7.6   
 
 loaded via a namespace (and not attached):
- [1] Rcpp_0.12.17      pillar_1.2.3      compiler_3.5.0   
+ [1] Rcpp_0.12.17      compiler_3.5.0    pillar_1.2.3     
  [4] git2r_0.22.1      plyr_1.8.4        workflowr_1.1.1  
  [7] bindr_0.1.1       R.methodsS3_1.7.1 R.utils_2.6.0    
 [10] tools_3.5.0       digest_0.6.15     evaluate_0.10.1  
 [13] tibble_1.4.2      gtable_0.2.0      pkgconfig_2.0.1  
-[16] rlang_0.2.1       cli_1.0.0         rstudioapi_0.7   
-[19] yaml_2.1.19       bindrcpp_0.2.2    withr_2.1.2      
-[22] stringr_1.3.1     knitr_1.20        rprojroot_1.3-2  
-[25] grid_3.5.0        tidyselect_0.2.4  glue_1.2.0       
-[28] R6_2.2.2          rmarkdown_1.10    purrr_0.2.5      
-[31] magrittr_1.5      whisker_0.3-2     backports_1.1.2  
-[34] scales_0.5.0      htmltools_0.3.6   assertthat_0.2.0 
-[37] colorspace_1.3-2  labeling_0.3      utf8_1.1.4       
-[40] stringi_1.2.3     lazyeval_0.2.1    munsell_0.5.0    
-[43] crayon_1.3.4      R.oo_1.22.0      </code></pre>
+[16] rlang_0.2.1       yaml_2.1.19       bindrcpp_0.2.2   
+[19] withr_2.1.2       stringr_1.3.1     knitr_1.20       
+[22] rprojroot_1.3-2   grid_3.5.0        tidyselect_0.2.4 
+[25] glue_1.2.0        R6_2.2.2          rmarkdown_1.10   
+[28] purrr_0.2.5       magrittr_1.5      whisker_0.3-2    
+[31] backports_1.1.2   scales_0.5.0      htmltools_0.3.6  
+[34] assertthat_0.2.0  colorspace_1.3-2  labeling_0.3     
+[37] stringi_1.2.3     lazyeval_0.2.1    munsell_0.5.0    
+[40] R.oo_1.22.0      </code></pre>
 </div>
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
